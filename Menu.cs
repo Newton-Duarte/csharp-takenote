@@ -52,6 +52,7 @@ namespace TakeNote
             string description = Console.ReadLine();
 
             Program.CreateNote(new Note(id, title, description));
+            Show();
         }
 
         static void ListNotes()
