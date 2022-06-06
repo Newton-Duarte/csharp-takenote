@@ -66,7 +66,16 @@ namespace TakeNote
 
         static void DeleteNote()
         {
-            Console.WriteLine("Você escolheu deletar uma anotação!");
+            Console.WriteLine("Lista de Anotações");
+            Console.WriteLine("-----------------------------");
+            Program.ListNotes();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Informe o identificador da anotação: ");
+
+            short noteId = short.Parse(Console.ReadLine());
+
+            Program.DeleteNote(noteId);
+            Show();
         }
 
         static void ExportNotes()
