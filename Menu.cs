@@ -58,7 +58,10 @@ namespace TakeNote
         static void ListNotes()
         {
             Console.WriteLine("Você escolheu listar todas as anotações!");
+            Console.WriteLine("-----------------------------");
             Program.ListNotes();
+            Console.WriteLine("-----------------------------");
+            Show();
         }
 
         static void DeleteNote()
