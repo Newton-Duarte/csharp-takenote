@@ -1,4 +1,4 @@
-﻿namespace TakeNote
+namespace TakeNote
 {
     class Program
     {
@@ -10,6 +10,11 @@
 
         public static void ListNotes()
         {
+            if (Notes.Count == 0) {
+                Console.WriteLine("Você não possui anotações!");
+                return;
+            }
+            
             foreach(var note in Notes)
             {
                 Console.WriteLine($"{note.Id} | {note.CreatedAt.ToString("dd/MM/yyyy hh:mm")} | {note.Title} | {note.Description}");
