@@ -1,4 +1,4 @@
-namespace TakeNote
+﻿namespace TakeNote
 {
     class Program
     {
@@ -24,7 +24,23 @@ namespace TakeNote
         public static void CreateNote(Note note)
         {
             Notes.Add(note);
-            Menu.Show();
+        }
+
+        public static void DeleteNote(int noteId)
+        {
+            var note = Notes.Find(note => note.Id == noteId);
+
+            if (note == null) {
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("Anotação não encontrada!");
+                Console.WriteLine("-----------------------------");
+                return;
+            }
+
+            Notes.Remove(note);
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Anotação excluída com sucesso!");
+            Console.WriteLine("-----------------------------");
         }
     }
 }
