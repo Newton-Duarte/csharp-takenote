@@ -81,6 +81,7 @@ namespace TakeNote
         static void ExportNotes()
         {
             Console.WriteLine("Você escolheu exportar as anotações em arquivo");
+            Show();
         }
     }
 }
