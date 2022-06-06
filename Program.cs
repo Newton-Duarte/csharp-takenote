@@ -19,8 +19,6 @@ namespace TakeNote
             {
                 Console.WriteLine($"{note.Id} | {note.CreatedAt.ToString("dd/MM/yyyy hh:mm")} | {note.Title} | {note.Description}");
             }
-
-            Menu.Show();
         }
 
         public static void CreateNote(Note note)
