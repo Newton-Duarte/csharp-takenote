@@ -31,11 +31,10 @@ namespace TakeNote
         {
             int noteId = GenerateNoteId();
 
-            if (Notes.Count > 0) {
-                noteId = Notes[Notes.Count - 1].Id + 1;
-            } else {
-                noteId = 1;
-            }
+            var note = new Note(noteId, title, description);
+            Notes.Add(note);
+            SaveNoteToFile(note);
+        }
 
         private static int GenerateNoteId()
         {
