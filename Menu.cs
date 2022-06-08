@@ -35,7 +35,7 @@ namespace TakeNote
 
         static void AddNote()
         {
-            Console.WriteLine("Você escolheu adicionar uma anotação!");
+            Util.CreateConsoleTitle("Adicionar Anotação");
 
             Console.WriteLine("Informe o Título: ");
             string title = Console.ReadLine();
@@ -49,30 +49,20 @@ namespace TakeNote
 
         static void ListNotes()
         {
-            Console.WriteLine("Você escolheu listar todas as anotações!");
-            Console.WriteLine("-----------------------------");
+            Util.CreateConsoleTitle("Lista de Anotações");
             Program.ListNotes();
-            Console.WriteLine("-----------------------------");
             Show();
         }
 
         static void DeleteNote()
         {
-            Console.WriteLine("Lista de Anotações");
-            Console.WriteLine("-----------------------------");
+            Util.CreateConsoleTitle("Lista de Anotações");
             Program.ListNotes();
-            Console.WriteLine("-----------------------------");
             Console.WriteLine("Informe o identificador da anotação: ");
 
             short noteId = short.Parse(Console.ReadLine());
 
             Program.DeleteNote(noteId);
-            Show();
-        }
-
-        static void ExportNotes()
-        {
-            Console.WriteLine("Você escolheu exportar as anotações em arquivo");
             Show();
         }
     }
