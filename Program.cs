@@ -9,6 +9,8 @@ namespace TakeNote
         static string sourcePath = @$"{targetPath}{osSeparator}{fileName}";
         static void Main(string[] args)
         {
+            ReadNotesFromFile();
+            Console.Clear();
             Menu.Show();
         }
 
