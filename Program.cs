@@ -21,9 +21,17 @@
             }
         }
 
-        public static void CreateNote(Note note)
+        public static void CreateNote(string title, string description)
         {
-            Notes.Add(note);
+            int noteId;
+
+            if (Notes.Count > 0) {
+                noteId = Notes[Notes.Count - 1].Id + 1;
+            } else {
+                noteId = 1;
+            }
+
+            Notes.Add(new Note(noteId, title, description));
         }
 
         public static void DeleteNote(int noteId)
