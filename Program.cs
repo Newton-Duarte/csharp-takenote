@@ -1,4 +1,4 @@
-namespace TakeNote
+﻿namespace TakeNote
 {
     class Program
     {
