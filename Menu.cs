@@ -4,16 +4,12 @@ namespace TakeNote
     {
         public static void Show()
         {
-            //Console.Clear();
-
-            Console.WriteLine("Bem-vindo ao TakeNote!");
-            Console.WriteLine("======================");
-            Console.WriteLine("Escolha uma opção: ");
+            Util.CreateConsoleTitle("Bem-vindo ao TakeNote");
             Console.WriteLine("1 - Adicionar Anotação");
             Console.WriteLine("2 - Listar Anotações");
             Console.WriteLine("3 - Excluir Anotação");
-            Console.WriteLine("4 - Exportar em Arquivo");
             Console.WriteLine("0 - Sair");
+            Console.WriteLine("Escolha uma opção: ");
 
             short option = short.Parse(Console.ReadLine());
 
