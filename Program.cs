@@ -1,8 +1,12 @@
-﻿namespace TakeNote
+namespace TakeNote
 {
     class Program
     {
         static List<Note> Notes = new List<Note>();
+        static string targetPath = Directory.GetCurrentDirectory();
+        static char osSeparator = Path.DirectorySeparatorChar;
+        static string fileName = "notes.txt";
+        static string sourcePath = @$"{targetPath}{osSeparator}{fileName}";
         static void Main(string[] args)
         {
             Menu.Show();
