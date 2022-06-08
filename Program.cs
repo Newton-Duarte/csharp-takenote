@@ -17,13 +17,13 @@ namespace TakeNote
         public static void ListNotes()
         {
             if (Notes.Count == 0) {
-                Console.WriteLine("Você não possui anotações!");
+                Util.CreateColoredConsoleMessage("Você não possui anotações!");
                 return;
             }
             
             foreach(var note in Notes)
             {
-                Console.WriteLine($"{note.Id} | {note.CreatedAt.ToString("dd/MM/yyyy hh:mm")} | {note.Title} | {note.Description}");
+                Util.CreateColoredConsoleMessage(FormatNote(note));
             }
         }
 
