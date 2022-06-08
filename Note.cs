@@ -8,8 +8,8 @@ public class Note
     public Note(int id, string title, string description)
     {
         Id = id;
-        Title = title;
-        Description = description;
+        Title = title.Trim();
+        Description = description.Trim();
     }
 
 }
