@@ -51,16 +51,84 @@ namespace TakeNote
             var note = Notes.Find(note => note.Id == noteId);
 
             if (note == null) {
-                Console.WriteLine("-----------------------------");
-                Console.WriteLine("Anotação não encontrada!");
-                Console.WriteLine("-----------------------------");
+                Util.CreateColoredConsoleMessage("Anotação não encontrada!");
                 return;
             }
 
             Notes.Remove(note);
-            Console.WriteLine("-----------------------------");
-            Console.WriteLine("Anotação excluída com sucesso!");
-            Console.WriteLine("-----------------------------");
+            Util.CreateColoredConsoleMessage("Anotação excluída com sucesso!");
+
+            CleanNotesFile();
+            SaveAllNotesToFile();
+        }
+
+        public static void CleanNotesFile()
+        {
+            File.WriteAllText(sourcePath, String.Empty);
+        }
+
+        public static void SaveAllNotesToFile()
+        {
+            foreach(var note in Notes)
+            {
+                SaveNoteToFile(note);
+            }
+        }
+
+        public static void ReadNotesFromFile()
+        {
+            try
+            {
+                using(StreamReader sr = File.OpenText(sourcePath))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        var splittedLine = line.Split("|");
+
+                        var noteTitle = splittedLine[2];
+                        var noteDescription = splittedLine[3];
+
+                        var noteId = GenerateNoteId();
+                        var note = new Note(noteId, noteTitle, noteDescription);
+                        Notes.Add(note);
+                    }
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                System.Console.WriteLine("Arquivo não encontrado!");
+                System.Console.WriteLine(e.Message);
+                System.Console.WriteLine("Criando o arquivo...");
+                CleanNotesFile();
+            }
+            catch (IOException e)
+            {
+                System.Console.WriteLine("Ocorreu um erro!");
+                System.Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void SaveNoteToFile(Note note)
+        {
+            try
+            {
+                using(StreamWriter sw = File.AppendText(sourcePath))
+                {
+                    string formattedNote = FormatNote(note);
+                    sw.WriteLine(formattedNote);
+                }
+            }
+            catch (IOException e)
+            {
+                System.Console.WriteLine("Ocorreu um erro!");
+                System.Console.WriteLine(e.Message);
+            }
+        }
+
+        public static string FormatNote(Note note)
+        {
+            return $"{note.Id} | {note.CreatedAt.ToString("dd/MM/yyyy hh:mm")} | {note.Title} | {note.Description}";
         }
     }
 }
