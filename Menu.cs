@@ -42,16 +42,13 @@ namespace TakeNote
         {
             Console.WriteLine("Você escolheu adicionar uma anotação!");
 
-            Console.WriteLine("Informe o Id: ");
-            short id = short.Parse(Console.ReadLine());
-
             Console.WriteLine("Informe o Título: ");
             string title = Console.ReadLine();
 
             Console.WriteLine("Informe a Descrição: ");
             string description = Console.ReadLine();
 
-            Program.CreateNote(new Note(id, title, description));
+            Program.CreateNote(title, description);
             Show();
         }
 
