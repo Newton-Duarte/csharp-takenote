@@ -29,7 +29,7 @@ namespace TakeNote
 
         public static void CreateNote(string title, string description)
         {
-            int noteId;
+            int noteId = GenerateNoteId();
 
             if (Notes.Count > 0) {
                 noteId = Notes[Notes.Count - 1].Id + 1;
@@ -37,7 +37,14 @@ namespace TakeNote
                 noteId = 1;
             }
 
-            Notes.Add(new Note(noteId, title, description));
+        private static int GenerateNoteId()
+        {
+            if (Notes.Count > 0)
+            {
+                return Notes[Notes.Count - 1].Id + 1;
+            }
+            
+            return 1;
         }
 
         public static void DeleteNote(int noteId)
