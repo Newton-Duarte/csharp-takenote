@@ -24,7 +24,6 @@ namespace TakeNote
                 case 1: AddNote(); break;
                 case 2: ListNotes(); break;
                 case 3: DeleteNote(); break;
-                case 4: ExportNotes(); break;
                 default: Show(); break;
             }
         }
